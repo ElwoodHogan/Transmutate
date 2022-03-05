@@ -4,39 +4,65 @@ using UnityEngine;
 
 public class GunBase : MonoBehaviour
 {
-    [SerializeField] List<GunModBase> GunMods = new List<GunModBase>();
+    [SerializeField] float GunCooldownTimer = .2f;
+    [Space]
+    [SerializeField] List<GunMod> GunMods = new List<GunMod>();
     [SerializeField] int currentGunModIndex = 0;
-
-    [SerializeField] Transform lineStartPoint;  //Should be camera
-    [SerializeField] Transform lineDirection;  //Should be camera
+    [Space]
+    [SerializeField] Transform Camera;  //Should be camera
+    [SerializeField] LineRenderer ShootLine;
+    [SerializeField] Transform GunTip;
     [SerializeField] LayerMask blockLayer; 
-
     [SerializeField] bool OnlyOneBlockCanBeChanged = true;
 
     GameObject lastHitObject;
     Material lastHitObjectMaterial;
+    bool onCooldown = false;
     private void Update()
     {
-
+        if (onCooldown) return;  //The gun cant be fired on cooldown
         if (Input.GetMouseButtonDown(0))
         {
-            print("shot!");
+            //print("shot!");
+
+            //The gun has shot, it is now on cooldown
+            onCooldown = true;
+            Timer.SimpleTimer(() => onCooldown = false, GunCooldownTimer);
+
+            //Visual
+            ShootLine.enabled = true;
+            ShootLine.SetPositions(new Vector3[2] { GunTip.position, (Camera.position+(Camera.forward * 5))  });
+            Timer.SimpleTimer(() => ShootLine.enabled = false, .05f);
+
             RaycastHit hit;
 
-            if (Physics.Raycast(lineStartPoint.position, lineDirection.forward, out hit, 999, blockLayer))
+            if (Physics.Raycast(Camera.position, Camera.forward, out hit, 999, blockLayer))
             {
-                print("hit!");
-                if (lastHitObject)
+                //print("hit!");
+                
+                if (lastHitObject && OnlyOneBlockCanBeChanged)
                 {
                     lastHitObject.GetComponent<Renderer>().material = lastHitObjectMaterial;
                     lastHitObject.GetComponent<Collider>().material = null;
-                }
-                if (OnlyOneBlockCanBeChanged)
-                {
+
+                    //Removing transmutated properties from last hit block
+                    foreach (var script in lastHitObject.GetComponents<MonoBehaviour>())
+                    {
+                        Destroy(script);
+                    }
+
+                    lastHitObjectMaterial = new Material(hit.collider.GetComponent<Renderer>().material);
+                    lastHitObject = hit.collider.gameObject;
+                } else { 
                     lastHitObject = hit.collider.gameObject;
                     lastHitObjectMaterial = new Material(hit.collider.GetComponent<Renderer>().material);
                 }
 
+                //Removing transmutated properties before adding a new one
+                foreach (var script in hit.collider.GetComponents<MonoBehaviour>())
+                {
+                    Destroy(script);
+                }
                 GunMods[currentGunModIndex].OnBlockShoot(hit.collider);
             }
         }
@@ -44,6 +70,6 @@ public class GunBase : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawLine(lineStartPoint.position, lineDirection.forward * 99);
+        Gizmos.DrawLine(Camera.position, Camera.forward * 99);
     }
 }

@@ -20,6 +20,8 @@ public class RigidbodyController : MonoBehaviour
 
     bool crouched = false;
 
+    public Vector3 velocityBeforePhysicsUpdate { get; private set;  }
+
     private void Update()
     {
         MovementInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
@@ -61,6 +63,7 @@ public class RigidbodyController : MonoBehaviour
     private void FixedUpdate()
     {
         PlayerBody.AddForce(Vector3.up * CUSTOM_GRAVITY, ForceMode.Acceleration);
+        velocityBeforePhysicsUpdate = PlayerBody.velocity;
     }
 
     [Space]

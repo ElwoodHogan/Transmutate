@@ -6,9 +6,14 @@ using UnityEngine.UI;
 public abstract class GunMod : ScriptableObject
 {
     public string ModName;
-    public Image ModImage;
+    public Sprite ModImage;
     public Material ModMaterial;
-    public BlockMod BlockMod;
 
-    public virtual void OnBlockShoot(Collider shotBlock) { }
+
+    public virtual void OnBlockShoot(Collider shotBlock) {
+        shotBlock.gameObject.GetComponent<Renderer>().material = ModMaterial;
+        TransmuteBlock(shotBlock);
+    }
+
+    protected abstract void TransmuteBlock(Collider shotBlock);
 }
