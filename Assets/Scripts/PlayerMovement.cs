@@ -4,25 +4,54 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float moveSpeed;
-    [SerializeField] float strafeSpeed;
-    [SerializeField] float jumpForce;
-    Rigidbody _rb;
+
+
+
+
+    //DEPRECIATED
+
+
+
+
+
+    Vector3 _velocity;
+    CharacterController _controller;
+    bool _grounded;
+
+    [SerializeField] float playerSpeed = 2;
+    [SerializeField] float jumpHeight = 2;
+    [SerializeField] float gravityScale = 1;
+    float GRAVITY_VALUE { get{ return -9.81f * gravityScale; }}
+    
 
     private void Awake()
     {
-        _rb = GetComponent<Rigidbody>();
+        _controller = gameObject.GetComponent<CharacterController>();
     }
+
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space)) _rb.velocity += new Vector3(0, jumpForce, 0);
+        PlayerInput();
+
     }
-    private void FixedUpdate()
+
+    void PlayerInput()
     {
-        float yVelocity = _rb.velocity.y;
-        if (Input.GetKey(KeyCode.W)) _rb.velocity = (transform.forward * moveSpeed) + new Vector3(0, yVelocity, 0);
-        if (Input.GetKey(KeyCode.S)) _rb.velocity = (-transform.forward * moveSpeed) + new Vector3(0, yVelocity, 0);
-        if (Input.GetKey(KeyCode.A)) _rb.velocity = (-transform.right * moveSpeed) + new Vector3(0, yVelocity, 0);
-        if (Input.GetKey(KeyCode.D)) _rb.velocity = (transform.right * moveSpeed) + new Vector3(0, yVelocity, 0);
+        _grounded = _controller.isGrounded;
+
+        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        move = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0) * move;
+        //move =Vector3.Scale(move, transform.forward);
+        _controller.Move(move * (Time.deltaTime * playerSpeed));
+
+        if(Input.GetButtonDown("Jump") && _grounded){
+            _velocity.y = Mathf.Sqrt(jumpHeight * -3f * GRAVITY_VALUE);
+        }
+        else
+        {
+            _velocity.y += GRAVITY_VALUE * Time.deltaTime;
+        }
+
+        _controller.Move(_velocity * Time.deltaTime);
     }
 }
