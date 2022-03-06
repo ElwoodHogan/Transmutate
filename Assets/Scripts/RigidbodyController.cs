@@ -11,7 +11,7 @@ public class RigidbodyController : MonoBehaviour
     [SerializeField] Transform GroundCheck;
     [SerializeField] CapsuleCollider PlayerCollider;
     [SerializeField] Transform Camera;
-    [SerializeField] float Speed;
+    public float Speed;
     [SerializeField] float jumpForce;
     [SerializeField] float gravityScale = 1;
     float CUSTOM_GRAVITY { get { return -9.81f * gravityScale; } }

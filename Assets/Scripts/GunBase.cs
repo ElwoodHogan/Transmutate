@@ -18,6 +18,11 @@ public class GunBase : MonoBehaviour
     GameObject lastHitObject;
     Material lastHitObjectMaterial;
     bool onCooldown = false;
+
+    private void Start()
+    {
+        ShootLine.material = GunMods[currentGunModIndex].ModMaterial;
+    }
     private void Update()
     {
         if (onCooldown) return;  //The gun cant be fired on cooldown
