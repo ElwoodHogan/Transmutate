@@ -12,6 +12,7 @@ public class GunBase : MonoBehaviour
     [SerializeField] Transform Camera;  //Should be camera
     [SerializeField] LineRenderer ShootLine;
     [SerializeField] Transform GunTip;
+    [SerializeField] Transform ScienceBall;
     [SerializeField] LayerMask blockLayer; 
     [SerializeField] bool OnlyOneBlockCanBeChanged = true;
 
@@ -25,6 +26,9 @@ public class GunBase : MonoBehaviour
     }
     private void Update()
     {
+
+        ShootLine.SetPositions(new Vector3[] { ScienceBall.position, GunTip.position, (Camera.position + (Camera.forward * 5)) });
+
         if (onCooldown) return;  //The gun cant be fired on cooldown
         if (Input.GetMouseButtonDown(0))
         {
@@ -36,7 +40,6 @@ public class GunBase : MonoBehaviour
 
             //Visual
             ShootLine.enabled = true;
-            ShootLine.SetPositions(new Vector3[2] { GunTip.position, (Camera.position+(Camera.forward * 5))  });
             Timer.SimpleTimer(() => ShootLine.enabled = false, .05f);
 
             RaycastHit hit;
