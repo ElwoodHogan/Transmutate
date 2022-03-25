@@ -194,6 +194,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: bb5
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4e21f8a412a85864b90bf3f1c523b0c8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e21f8a412a85864b90bf3f1c523b0c8, type: 3}
 --- !u!1 &50295568
@@ -2254,7 +2258,7 @@ GameObject:
   - component: {fileID: 921133940}
   - component: {fileID: 921133938}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PLAYER
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5981,7 +5985,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8788551953119708837
 Transform:
   m_ObjectHideFlags: 0
