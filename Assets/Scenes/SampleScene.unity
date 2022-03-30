@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4e21f8a412a85864b90bf3f1c523b0c8, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4e21f8a412a85864b90bf3f1c523b0c8, type: 3}
       propertyPath: m_LocalScale.x
@@ -1688,8 +1688,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &666365027 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 4e21f8a412a85864b90bf3f1c523b0c8, type: 3}
+  m_PrefabInstance: {fileID: 1577693156}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &736910176
 GameObject:
   m_ObjectHideFlags: 0
@@ -2364,8 +2369,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 921133933}
-  m_LocalRotation: {x: -0, y: 0.9993975, z: -0, w: -0.034707718}
-  m_LocalPosition: {x: -4.190378, y: 7.1512356, z: -27.928432}
+  m_LocalRotation: {x: -0, y: 0.47964522, z: -0, w: 0.87746257}
+  m_LocalPosition: {x: -14.46, y: 3.22, z: 4.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1687258585}
@@ -2373,8 +2378,8 @@ Transform:
   - {fileID: 1264001585}
   - {fileID: 1964206691}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: -302.676, z: 0}
 --- !u!114 &921133938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2433,7 +2438,7 @@ MonoBehaviour:
   GunCooldownTimer: 0.2
   GunMods:
   - {fileID: 11400000, guid: fad659bbd05706a4e8a25a13f05e0f3a, type: 2}
-  - {fileID: 11400000, guid: 0ff5f886d0601e04fa72f6e3feb6bf0a, type: 2}
+  - {fileID: 11400000, guid: 2261494016b1d574396b9b5103fea273, type: 2}
   currentGunModIndex: 0
   Camera: {fileID: 1687258585}
   ShootLine: {fileID: 1964206690}
@@ -2443,6 +2448,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   OnlyOneBlockCanBeChanged: 1
+  speedBallMat: {fileID: 2100000, guid: 6c038b65867dc854390d98568a4b65e1, type: 2}
+  ballRend: {fileID: 666365027}
 --- !u!54 &921133941
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4473,7 +4480,7 @@ RectTransform:
   m_Children:
   - {fileID: 1021315731}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5820,7 +5827,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 45, y: 130, z: 90}
 --- !u!1 &8788551953119681157
 GameObject:
