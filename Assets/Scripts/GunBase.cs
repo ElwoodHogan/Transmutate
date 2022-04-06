@@ -16,9 +16,6 @@ public class GunBase : MonoBehaviour
     [SerializeField] LayerMask blockLayer; 
     [SerializeField] bool OnlyOneBlockCanBeChanged = true;
 
-    [SerializeField] Material speedBallMat;  //TEMP
-    [SerializeField] Renderer ballRend;  //TEMP
-
     GameObject lastHitObject;
     Material lastHitObjectMaterial;
     bool onCooldown = false;
@@ -76,11 +73,6 @@ public class GunBase : MonoBehaviour
                 }
                 GunMods[currentGunModIndex].OnBlockShoot(hit.collider);
             }
-        }
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            currentGunModIndex = 1;
-            ballRend.material = speedBallMat;
         }
     }
 
