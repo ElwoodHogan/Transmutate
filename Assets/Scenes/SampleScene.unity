@@ -2562,8 +2562,8 @@ MonoBehaviour:
   GunCooldownTimer: 0.2
   GunMods:
   - {fileID: 11400000, guid: fad659bbd05706a4e8a25a13f05e0f3a, type: 2}
-  - {fileID: 11400000, guid: 0ff5f886d0601e04fa72f6e3feb6bf0a, type: 2}
-  currentGunModIndex: 0
+  - {fileID: 11400000, guid: 2261494016b1d574396b9b5103fea273, type: 2}
+  currentGunModIndex: 1
   Camera: {fileID: 1687258585}
   ShootLine: {fileID: 1964206690}
   GunTip: {fileID: 838667925}
