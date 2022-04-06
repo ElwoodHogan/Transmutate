@@ -26,6 +26,10 @@ public class GunBase : MonoBehaviour
     }
     private void Update()
     {
+        if (Input.GetKey(KeyCode.Alpha1)) currentGunModIndex = 0;
+        if (Input.GetKey(KeyCode.Alpha2)) currentGunModIndex = 1;
+        if (Input.GetKey(KeyCode.Alpha3)) currentGunModIndex = 2;
+
 
         ShootLine.SetPositions(new Vector3[] { ScienceBall.position, GunTip.position, (Camera.position + (Camera.forward * 5)) });
 
