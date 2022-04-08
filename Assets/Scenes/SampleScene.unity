@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.28089392, g: 0.36609533, b: 0.4984095, a: 1}
+  m_IndirectSpecularColor: {r: 0.28089404, g: 0.36609572, b: 0.49841034, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4251,6 +4251,7 @@ GameObject:
   - component: {fileID: 921133939}
   - component: {fileID: 921133940}
   - component: {fileID: 921133938}
+  - component: {fileID: 921133943}
   m_Layer: 0
   m_Name: PLAYER
   m_TagString: Player
@@ -4362,7 +4363,7 @@ MonoBehaviour:
   GroundCheck: {fileID: 1813541627}
   PlayerCollider: {fileID: 921133934}
   Camera: {fileID: 1687258585}
-  Speed: 5
+  Speed: 7
   jumpForce: 15
   gravityScale: 3
   GizmoLineDistance: 0.445
@@ -4436,6 +4437,28 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.38
   m_Center: {x: 0, y: -0.66, z: 0}
+--- !u!114 &921133943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921133933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8a6e0ab39d4d704c8e2a61527eefc77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Shootable:
+    serializedVersion: 2
+    m_Bits: 64
+  PlayerBody: {fileID: 921133941}
+  GroundCheck: {fileID: 1813541627}
+  PlayerCollider: {fileID: 921133934}
+  Camera: {fileID: 1687258585}
+  Speed: 7
+  jumpForce: 15
+  stickyBlock: {fileID: 0}
 --- !u!1 &979388129
 GameObject:
   m_ObjectHideFlags: 0
