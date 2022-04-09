@@ -4,21 +4,15 @@ using UnityEngine;
 
 public class BM_Phase : BlockMod
 {
-    private void OnCollisionStay(Collision collision)
+    Collider m_Collider;
+    private void Awake()
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            collision.gameObject.GetComponent<RigidbodyController>().Speed =
-                25f;
-        }
+        m_Collider = GetComponent<Collider>();
+        m_Collider.enabled = false;
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnDestroy()
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            collision.gameObject.GetComponent<RigidbodyController>().Speed =
-                5f;
-        }
+        m_Collider.enabled = true;
     }
 }
