@@ -82,6 +82,7 @@ public class GunBase : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        Gizmos.color = Color.red;
         Gizmos.DrawLine(Camera.position, Camera.forward * 99);
     }
 }
