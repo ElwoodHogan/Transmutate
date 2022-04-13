@@ -13,6 +13,8 @@ public class GunBase : MonoBehaviour
     [SerializeField] LineRenderer ShootLine;
     [SerializeField] Transform GunTip;
     [SerializeField] Transform ScienceBall;
+    [SerializeField] Renderer ScienceBallRenderer;
+    [SerializeField] Material[] ScienceBallMaterials;
     [SerializeField] LayerMask blockLayer; 
     [SerializeField] bool OnlyOneBlockCanBeChanged = true;
 
@@ -26,9 +28,30 @@ public class GunBase : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Alpha1)) currentGunModIndex = 0;
-        if (Input.GetKey(KeyCode.Alpha2)) currentGunModIndex = 1;
-        if (Input.GetKey(KeyCode.Alpha3)) currentGunModIndex = 2;
+        if (Input.GetKey(KeyCode.Alpha1))
+        {
+            currentGunModIndex = 0;
+            ScienceBallRenderer.material = ScienceBallMaterials[currentGunModIndex];
+            ShootLine.material = GunMods[currentGunModIndex].ModMaterial;
+        }
+        if (Input.GetKey(KeyCode.Alpha2))
+        {
+            currentGunModIndex = 1;
+            ScienceBallRenderer.material = ScienceBallMaterials[currentGunModIndex];
+            ShootLine.material = GunMods[currentGunModIndex].ModMaterial;
+        }
+        if (Input.GetKey(KeyCode.Alpha3))
+        {
+            currentGunModIndex = 2;
+            ScienceBallRenderer.material = ScienceBallMaterials[currentGunModIndex];
+            ShootLine.material = GunMods[currentGunModIndex].ModMaterial;
+        }
+        if (Input.GetKey(KeyCode.Alpha4))
+        {
+            currentGunModIndex = 3;
+            ScienceBallRenderer.material = ScienceBallMaterials[currentGunModIndex];
+            ShootLine.material = GunMods[currentGunModIndex].ModMaterial;
+        }
 
 
         ShootLine.SetPositions(new Vector3[] { ScienceBall.position, GunTip.position, (Camera.position + (Camera.forward * 5)) });
