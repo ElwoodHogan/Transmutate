@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Text;
+using System.IO;
+using Newtonsoft.Json;
 
 public class DialogueController : MonoBehaviour
 {
@@ -18,11 +20,20 @@ public class DialogueController : MonoBehaviour
         "<color=#ffffffbf>",
         "<color=#ffffffff>",
     };
+    private Dictionary<string, List<string>> dialogueDict = new Dictionary<string, List<string>>();
 
-    // Places a dialogue sequence associated with the given reference string into the queue for playback.
+    // Places a dialogue list associated with the given reference string into the queue for playback.
     public void EnqueueDialogue(string dialogueRef)
     {
         dialogueQueue.Enqueue(dialogueRef);
+    }
+
+    // Read our all of our dialogue from a json file and serialize it.
+    void Start()
+    {
+        string path = Application.dataPath + "/Dialogue.json";
+        string jsonData = File.ReadAllText(path);
+        dialogueDict = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(jsonData);
     }
 
     void Update()
@@ -74,6 +85,6 @@ public class DialogueController : MonoBehaviour
     // Returns a list of dialogue lines associated with the given reference string.
     private List<string> GetDialogue(string dialogueRef)
     {
-        return null; // Placeholder
+        return dialogueDict[dialogueRef];
     }
 }

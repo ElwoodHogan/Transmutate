@@ -1,0 +1,12 @@
+{
+	"test": [
+		"this is the first test line",
+		"this is the second test line",
+		"next up is an empty string test line",
+		"",
+		"this is the final test line"
+	],
+	"test2": [
+		"this is another test"
+	]
+}
