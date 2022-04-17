@@ -15,10 +15,10 @@ public class DialogueController : MonoBehaviour
     private StringBuilder stringBuf = new StringBuilder("");
     private bool dialogueActive = false;
     private static string[] alphaCodes = {
-        "<color=#ffffff40>",
-        "<color=#ffffff80>",
-        "<color=#ffffffbf>",
-        "<color=#ffffffff>",
+        "<color=#00000040>",
+        "<color=#00000080>",
+        "<color=#000000bf>",
+        "<color=#000000ff>",
     };
     private Dictionary<string, List<string>> dialogueDict = new Dictionary<string, List<string>>();
 
@@ -34,6 +34,7 @@ public class DialogueController : MonoBehaviour
         string path = Application.dataPath + "/Dialogue.json";
         string jsonData = File.ReadAllText(path);
         dialogueDict = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(jsonData);
+        EnqueueDialogue("test");
     }
 
     void Update()
@@ -70,9 +71,9 @@ public class DialogueController : MonoBehaviour
     // Increments the alpha (transparency) of each character in the string buffer by one level.
     private void UpdateBufAlpha()
     {
-        for (int i = 0; i < alphaCodes.Length - 1; i++)
+        for (int i = alphaCodes.Length - 1; i > 0; i--)
         {
-            stringBuf.Replace(alphaCodes[i], alphaCodes[i + 1]);
+            stringBuf.Replace(alphaCodes[i - 1], alphaCodes[i]);
         }
     }
 
