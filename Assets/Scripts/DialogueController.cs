@@ -9,16 +9,18 @@ using Newtonsoft.Json;
 public class DialogueController : MonoBehaviour
 {
     public Text textBox;
+    public Image textBoxBackground;
     public float textInterval; // The speed at which text will type into the text box.
+    public float pauseInterval; // The delay between displaying new lines of text.
 
     private Queue<string> dialogueQueue = new Queue<string>();
     private StringBuilder stringBuf = new StringBuilder("");
     private bool dialogueActive = false;
     private static string[] alphaCodes = {
-        "<color=#00000040>",
-        "<color=#00000080>",
-        "<color=#000000bf>",
-        "<color=#000000ff>",
+        "<color=#FFFFFF40>",
+        "<color=#FFFFFF80>",
+        "<color=#FFFFFFBF>",
+        "<color=#FFFFFFFF>",
     };
     private Dictionary<string, List<string>> dialogueDict = new Dictionary<string, List<string>>();
 
@@ -34,7 +36,7 @@ public class DialogueController : MonoBehaviour
         string path = Application.dataPath + "/Dialogue.json";
         string jsonData = File.ReadAllText(path);
         dialogueDict = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(jsonData);
-        EnqueueDialogue("test");
+        EnqueueDialogue("game start");
     }
 
     void Update()
@@ -51,6 +53,7 @@ public class DialogueController : MonoBehaviour
 
     private IEnumerator PlayDialogue(string dialogueRef)
     {
+        ShowBackground();
         foreach (string dialogueLine in GetDialogue(dialogueRef))
         {
             for (int i = 0; i < dialogueLine.Length + alphaCodes.Length; i++)
@@ -60,12 +63,21 @@ public class DialogueController : MonoBehaviour
                 {
                     AppendBufChar(dialogueLine[i]);
                 }
-                textBox.text = stringBuf.ToString();
+                UpdateTextBox();
                 yield return new WaitForSeconds(textInterval);
             }
+            yield return new WaitForSeconds(pauseInterval);
             stringBuf.Clear();
         }
+        UpdateTextBox();
+        HideBackground();
         dialogueActive = false;
+    }
+
+    // Updates the text box to display the current string buffer.
+    private void UpdateTextBox()
+    {
+        textBox.text = stringBuf.ToString();
     }
 
     // Increments the alpha (transparency) of each character in the string buffer by one level.
@@ -87,5 +99,17 @@ public class DialogueController : MonoBehaviour
     private List<string> GetDialogue(string dialogueRef)
     {
         return dialogueDict[dialogueRef];
+    }
+
+    // Shows the textbox background
+    private void ShowBackground()
+    {
+        textBoxBackground.enabled = true;
+    }
+
+    // Hides the textbox background
+    private void HideBackground()
+    {
+        textBoxBackground.enabled = false;
     }
 }

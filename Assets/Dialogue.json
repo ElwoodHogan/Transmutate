@@ -6,7 +6,10 @@
 		"",
 		"this is the final test line"
 	],
-	"test2": [
-		"this is another test"
+	"game start": [
+		"Alright, robot. Let's see what you can do."
+	],
+	"level 0 complete": [
+		"Wow, you can crouch. How impressive."
 	]
 }
