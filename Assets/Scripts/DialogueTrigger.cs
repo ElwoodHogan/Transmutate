@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomChange : MonoBehaviour
+public class DialogueTrigger : MonoBehaviour
 {
     public DialogueController dialogueController;
     public string dialogueRef;
