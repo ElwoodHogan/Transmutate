@@ -20,27 +20,46 @@ public class RigidbodyController : MonoBehaviour
 
     bool crouched = false;
 
+    bool tryingToJump = false;
+    bool tryingToCrouch = false;
+
+    [SerializeField] AnimationCurve movementCurve;
+    [SerializeField] float curveMulti;
+
     public Vector3 velocityBeforePhysicsUpdate { get; private set;  }
+
+    [SerializeField] bool grounded;
 
     private void Update()
     {
-        MovementInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        MovementInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
 
-        MovePlayer();
+        tryingToJump = Input.GetKey(KeyCode.Space);
+
+        tryingToCrouch = (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl));
+
+    }
+    private void FixedUpdate()
+    {
+        PlayerBody.AddForce(Vector3.up * CUSTOM_GRAVITY, ForceMode.Acceleration);
+        velocityBeforePhysicsUpdate = PlayerBody.velocity;
+        grounded = (Physics.CheckSphere(GroundCheck.position, .1f, FloorMask)
+                || Physics.CheckSphere(GroundCheck.position, .1f, Shootable)) ;
+
+            MovePlayer();
     }
 
     void MovePlayer()
     {
-        Vector3 MoveVector = transform.TransformDirection(MovementInput) * Speed;
+        MovementInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (tryingToJump)
         {
-            if(Physics.CheckSphere(GroundCheck.position, .1f, FloorMask)
-                || Physics.CheckSphere(GroundCheck.position, .1f, Shootable))
+            if(grounded)
             PlayerBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
 
-        if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
+        if (tryingToCrouch)
         {
             crouched = true;
             PlayerCollider.height = 1;
@@ -55,21 +74,54 @@ public class RigidbodyController : MonoBehaviour
             Camera.localPosition = new Vector3(0, .5f, 0);
         }
 
-        if(crouched) MoveVector *= .5f;
 
-        PlayerBody.velocity = new Vector3(MoveVector.x, PlayerBody.velocity.y, MoveVector.z);
+        if (grounded)
+        {
+            PlayerBody.velocity = (Vector3.Normalize((transform.forward * Input.GetAxisRaw("Vertical")) + (transform.right * Input.GetAxisRaw("Horizontal"))) * Speed) + new Vector3(0,PlayerBody.velocity.y,0);
+            print((Vector3.Normalize((transform.forward * Input.GetAxisRaw("Vertical")) + (transform.right * Input.GetAxisRaw("Horizontal"))) * Speed) + new Vector3(0, PlayerBody.velocity.y, 0));
+        }
+        else
+        {
+            Vector3 MoveDir = Vector3.Normalize((transform.forward * Input.GetAxis("Vertical")) + (transform.right * Input.GetAxis("Horizontal"))) * Speed;
+            float LerpedMovement = InverseLerp(Vector3.zero,
+                MoveDir,
+                PlayerBody.velocity);
+            if (!float.IsNaN(LerpedMovement))
+            {
+                if (LerpedMovement < 0) LerpedMovement = 0;
+                LerpedMovement = Mathf.Round(LerpedMovement * 100f) / 100f;
+
+                float MoveModifier = movementCurve.Evaluate(Mathf.Abs(LerpedMovement)) * curveMulti;
+                Vector3 forceToAdd3 = MoveDir * MoveModifier;
+                
+                //print(LerpedMovement + " " + MoveDir + " " + forceToAdd3);
+                PlayerBody.AddForce(forceToAdd3, ForceMode.Acceleration);
+            }
+            else
+            {
+                PlayerBody.velocity = new Vector3(PlayerBody.velocity.x * .9f, PlayerBody.velocity.y, PlayerBody.velocity.z * .9f);
+            }
+        }
     }
 
-    private void FixedUpdate()
-    {
-        PlayerBody.AddForce(Vector3.up * CUSTOM_GRAVITY, ForceMode.Acceleration);
-        velocityBeforePhysicsUpdate = PlayerBody.velocity;
-    }
+    
 
     [Space]
     [SerializeField] float GizmoLineDistance = 1;
     private void OnDrawGizmos()
     {
         Gizmos.DrawSphere(HeadCheck.position, GizmoLineDistance);
+    }
+
+    public static float InverseLerp(Vector3 a, Vector3 b, Vector3 value)
+    {
+        Vector3 AB = b - a;
+        Vector3 AV = value - a;
+        return Vector3.Dot(AV, AB) / Vector3.Dot(AB, AB);
+    }
+
+     public Vector3 Abs(Vector3 inp)
+    {
+        return new Vector3(Mathf.Abs(inp.x), Mathf.Abs(inp.y), Mathf.Abs(inp.z));
     }
 }
