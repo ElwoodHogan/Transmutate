@@ -78,7 +78,7 @@ public class RigidbodyController : MonoBehaviour
         if (grounded)
         {
             PlayerBody.velocity = (Vector3.Normalize((transform.forward * Input.GetAxisRaw("Vertical")) + (transform.right * Input.GetAxisRaw("Horizontal"))) * Speed) + new Vector3(0,PlayerBody.velocity.y,0);
-            print((Vector3.Normalize((transform.forward * Input.GetAxisRaw("Vertical")) + (transform.right * Input.GetAxisRaw("Horizontal"))) * Speed) + new Vector3(0, PlayerBody.velocity.y, 0));
+            // print((Vector3.Normalize((transform.forward * Input.GetAxisRaw("Vertical")) + (transform.right * Input.GetAxisRaw("Horizontal"))) * Speed) + new Vector3(0, PlayerBody.velocity.y, 0));
         }
         else
         {

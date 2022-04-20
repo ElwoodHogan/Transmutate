@@ -15,7 +15,6 @@ public class StickyMovement : MonoBehaviour
     public Transform stickyBlock; 
     public Vector3 velocityBeforePhysicsUpdate { get; private set;  }
     [SerializeField] RigidbodyController rigidbodyController;
-    [SerializeField] StickyJumpMovement stickyJumpMovement;
 
     private void Update()
     {
@@ -46,9 +45,6 @@ public class StickyMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             PlayerBody.AddForce(Camera.transform.forward.normalized * jumpForce, ForceMode.Impulse);
-            stickyJumpMovement.enabled = true;
-            stickyJumpMovement.jumpVelocity = PlayerBody.velocity;
-            this.enabled = false;
         }
 
         PlayerBody.velocity = new Vector3(MoveVector.x, PlayerBody.velocity.y, MoveVector.z);
