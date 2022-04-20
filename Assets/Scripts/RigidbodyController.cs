@@ -95,7 +95,7 @@ public class RigidbodyController : MonoBehaviour
                 Vector3 forceToAdd3 = MoveDir * MoveModifier;
                 
                 //print(LerpedMovement + " " + MoveDir + " " + forceToAdd3);
-                PlayerBody.AddForce(forceToAdd3, ForceMode.Impulse);
+                PlayerBody.AddForce(forceToAdd3, ForceMode.Acceleration);
             }
             else
             {
