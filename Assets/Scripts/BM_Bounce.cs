@@ -13,8 +13,8 @@ public class BM_Bounce : BlockMod
         }
         if (collision.gameObject.tag == "Player")
         {
-            //collision.gameObject.GetComponent<Rigidbody>().velocity =
-             //   collision.gameObject.GetComponent<RigidbodyController>().velocityBeforePhysicsUpdate * -1f;
+            collision.gameObject.GetComponent<Rigidbody>().velocity =
+                collision.gameObject.GetComponent<BounceBall>().velocityBeforePhysicsUpdate * -1f;
         }
     }
 }
