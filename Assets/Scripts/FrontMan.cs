@@ -14,6 +14,8 @@ public class FrontMan : MonoBehaviour
 
     public Action OnUpdate;
 
+    public LayerMask Shootable;
+
     private void Awake()
     {
         FM = this;
