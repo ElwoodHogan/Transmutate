@@ -11,10 +11,11 @@ public class BM_Bounce : BlockMod
             collision.gameObject.GetComponent<Rigidbody>().velocity = 
                 collision.gameObject.GetComponent<RigidbodyController>().velocityBeforePhysicsUpdate * -1f;
         }
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Ball")
         {
             collision.gameObject.GetComponent<Rigidbody>().velocity =
-                collision.gameObject.GetComponent<BounceBall>().velocityBeforePhysicsUpdate * -1f;
+                collision.gameObject.GetComponent<BounceBall>().velocityBeforePhysicsUpdate
+                .Change(0, collision.gameObject.GetComponent<BounceBall>().velocityBeforePhysicsUpdate.y*(-2f), 0);
         }
     }
 }
