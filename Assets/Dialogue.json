@@ -1,15 +1,44 @@
 {
-	"test": [
-		"this is the first test line",
-		"this is the second test line",
-		"next up is an empty string test line",
-		"",
-		"this is the final test line"
-	],
 	"game start": [
 		"Alright, robot. Let's see what you can do."
 	],
-	"level 0 complete": [
+	"0": [
 		"Wow, you can crouch. How impressive."
+	],
+	"1": [
+		"Boing."
+	],
+	"2": [
+		"I didn't actually think you'd make it through that one."
+	],
+	"3": [
+		"You really are smart, aren't you?",
+		"I'm impressed, Robot."
+	],
+	"4": [
+		"My coworker made me a bet.",
+		"Don't let me down, Robot."
+	],
+	"5": [
+		"Much appreciated.",
+		"These next ones kind of spook me out, by the way."
+	],
+	"6": [
+		"I don't like thinking about where they go when they phase out."
+	],
+	"7": [
+		"I guess you don't experience fear, do you?"
+	],
+	"8": [
+		"I'm literally sweating right now."
+	],
+	"9": [
+		"Phew."
+	],
+	"10": [
+		"You're just a friendly neighborhood Robot."
+	],
+	"11": [
+		"Did you ever notice how you only had to crouch the one time?"
 	]
 }
