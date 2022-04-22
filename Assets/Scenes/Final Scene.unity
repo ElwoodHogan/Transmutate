@@ -570,8 +570,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 345249374822853292, guid: 605c93876b051ec448cc996f58de21f7, type: 3}
+      propertyPath: playerCam
+      value: 
+      objectReference: {fileID: 1103403863}
+    - target: {fileID: 345249375646578327, guid: 605c93876b051ec448cc996f58de21f7, type: 3}
+      propertyPath: playerCam
+      value: 
+      objectReference: {fileID: 1103403863}
+    - target: {fileID: 345249376237884387, guid: 605c93876b051ec448cc996f58de21f7, type: 3}
+      propertyPath: playerCam
+      value: 
+      objectReference: {fileID: 1103403863}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 605c93876b051ec448cc996f58de21f7, type: 3}
+--- !u!4 &1103403863 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3500306133121973619, guid: 793e584104d6c1c489b4a7546dfe9927, type: 3}
+  m_PrefabInstance: {fileID: 3500306131434780842}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1164467446
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -684,6 +701,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Speed Levels
       objectReference: {fileID: 0}
+    - target: {fileID: 6690063838525291632, guid: bfb22ff62fadbb84bae0a26edbc81fb2, type: 3}
+      propertyPath: playerCam
+      value: 
+      objectReference: {fileID: 1103403863}
     - target: {fileID: 8840613735845722836, guid: bfb22ff62fadbb84bae0a26edbc81fb2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.30776
@@ -749,7 +770,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2135e5d0226f9fb4ebccc97800954823, type: 2}
+  - {fileID: 2100000, guid: 2b3537c2f71ad7c4ba57e6f1ee081e91, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
