@@ -8,6 +8,8 @@ public class GM_Sticky : GunMod
     protected override void TransmuteBlock(Collider shotBlock)
     {
         shotBlock.gameObject.AddComponent<BM_Sticky>();
+        FindObjectOfType<RigidbodyController>().GetComponent<StickyMovement>().enabled = false;
+        FindObjectOfType<RigidbodyController>().GetComponent<RigidbodyController>().enabled = true;
     }
 }
 
