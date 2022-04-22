@@ -9,7 +9,10 @@ public class DialogueTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        dialogueController.EnqueueDialogue(dialogueRef);
-        Destroy(gameObject);
+        if (other.tag == "Player")
+        {
+            dialogueController.EnqueueDialogue(dialogueRef);
+            Destroy(gameObject);
+        }
     }
 }
