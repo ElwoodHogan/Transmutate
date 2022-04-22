@@ -155,7 +155,7 @@ MonoBehaviour:
   menuText: {fileID: 870470348}
   menuBackground: {fileID: 193604378}
   glimmerInterval: 0.06
-  sceneName: Logans scene
+  sceneName: Final Scene
 --- !u!4 &59595708
 Transform:
   m_ObjectHideFlags: 0

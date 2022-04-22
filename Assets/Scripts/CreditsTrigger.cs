@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CreditsTrigger : MonoBehaviour
 {
-    public Text creditsText;
-    public Image creditsBackground;
-    public Image crosshair;
+    public string sceneName;
 
     void OnTriggerEnter(Collider other)
     {
-        crosshair.enabled = false;
-        creditsBackground.enabled = true;
-        creditsText.enabled = true;
+        if (other.tag == "Player")
+        {
+            SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        }
     }
 }
