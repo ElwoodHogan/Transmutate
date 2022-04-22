@@ -10,11 +10,6 @@ public class MusicController : MonoBehaviour
 
     private bool nextIsLoud = false;
 
-    void Start()
-    {
-        audioSource.loop = false;
-    }
-
     void Update()
     {
         if (!audioSource.isPlaying)
