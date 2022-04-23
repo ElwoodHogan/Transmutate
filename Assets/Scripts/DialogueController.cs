@@ -46,7 +46,8 @@ public class DialogueController : MonoBehaviour
             if (dialogueQueue.Count > 0)
             {
                 dialogueActive = true;
-                StartCoroutine(PlayDialogue(dialogueQueue.Dequeue()));
+                string nextRef = dialogueQueue.Dequeue();
+                StartCoroutine(PlayDialogue(nextRef));
             }
         }
     }

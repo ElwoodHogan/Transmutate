@@ -1094,7 +1094,7 @@ MonoBehaviour:
   textBox: {fileID: 471701702}
   textBoxBackground: {fileID: 463954963}
   textInterval: 0.05
-  pauseInterval: 4
+  pauseInterval: 10
 --- !u!4 &627922124 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5255519208160434190, guid: 83d6330c588516c45bf0d48e2852f39c, type: 3}
