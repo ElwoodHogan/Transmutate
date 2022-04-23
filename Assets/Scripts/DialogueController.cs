@@ -35,7 +35,7 @@ public class DialogueController : MonoBehaviour
     // Read our all of our dialogue from a json file and serialize it.
     void Start()
     {
-        string path = Application.dataPath + "/Dialogue.json";
+        string path = Application.streamingAssetsPath + "/Dialogue.json";
         string jsonData = File.ReadAllText(path);
         dialogueDict = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(jsonData);
         EnqueueDialogue(entryRef);
