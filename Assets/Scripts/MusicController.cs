@@ -16,14 +16,14 @@ public class MusicController : MonoBehaviour
         {
             if (nextIsLoud)
             {
-                audioSource.volume = 0.5f;
+                audioSource.volume = 0.35f;
                 nextIsLoud = false;
                 audioSource.clip = loudSong;
                 audioSource.Play();
             }
             else
             {
-                audioSource.volume = 1.0f;
+                audioSource.volume = 0.9f;
                 nextIsLoud = true;
                 audioSource.clip = quietSong;
                 audioSource.Play();
