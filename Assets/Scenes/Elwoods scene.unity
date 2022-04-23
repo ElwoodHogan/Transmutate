@@ -798,11 +798,11 @@ PrefabInstance:
     - target: {fileID: 3500306131810376670, guid: 793e584104d6c1c489b4a7546dfe9927, type: 3}
       propertyPath: GunMods.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 38000bcee25e30248b2159078f7580ea, type: 2}
+      objectReference: {fileID: 11400000, guid: aed1db9d75e757946aaf00a4ecd18c81, type: 2}
     - target: {fileID: 3500306131810376670, guid: 793e584104d6c1c489b4a7546dfe9927, type: 3}
       propertyPath: GunMods.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: aed1db9d75e757946aaf00a4ecd18c81, type: 2}
+      objectReference: {fileID: 11400000, guid: 38000bcee25e30248b2159078f7580ea, type: 2}
     - target: {fileID: 3500306131810376670, guid: 793e584104d6c1c489b4a7546dfe9927, type: 3}
       propertyPath: ScienceBallMaterials.Array.size
       value: 4
@@ -818,11 +818,11 @@ PrefabInstance:
     - target: {fileID: 3500306131810376670, guid: 793e584104d6c1c489b4a7546dfe9927, type: 3}
       propertyPath: ScienceBallMaterials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: f0a28b5858940bd47872e9ca8f2a78c2, type: 2}
+      objectReference: {fileID: 2100000, guid: 8feaa39a0ba054b4cbbf0e16f2dfbf09, type: 2}
     - target: {fileID: 3500306131810376670, guid: 793e584104d6c1c489b4a7546dfe9927, type: 3}
       propertyPath: ScienceBallMaterials.Array.data[3]
       value: 
-      objectReference: {fileID: 2100000, guid: 8feaa39a0ba054b4cbbf0e16f2dfbf09, type: 2}
+      objectReference: {fileID: 2100000, guid: f0a28b5858940bd47872e9ca8f2a78c2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 793e584104d6c1c489b4a7546dfe9927, type: 3}
 --- !u!1001 &6690063839527420573
