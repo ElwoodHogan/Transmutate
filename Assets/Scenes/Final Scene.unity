@@ -1226,6 +1226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textBox: {fileID: 471701702}
   textBoxBackground: {fileID: 463954963}
+  entryRef: game start
   textInterval: 0.05
   pauseInterval: 3.6
 --- !u!4 &627922124 stripped

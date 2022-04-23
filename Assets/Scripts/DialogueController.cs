@@ -10,12 +10,14 @@ public class DialogueController : MonoBehaviour
 {
     public Text textBox;
     public Image textBoxBackground;
+    public string entryRef; // First dialogue ref to be played immediately.
     public float textInterval; // The speed at which text will type into the text box.
     public float pauseInterval; // The delay between displaying new lines of text.
 
+    public bool dialogueActive = false;
+
     private Queue<string> dialogueQueue = new Queue<string>();
     private StringBuilder stringBuf = new StringBuilder("");
-    private bool dialogueActive = false;
     private static string[] alphaCodes = {
         "<color=#FFFFFF40>",
         "<color=#FFFFFF80>",
@@ -36,7 +38,7 @@ public class DialogueController : MonoBehaviour
         string path = Application.dataPath + "/Dialogue.json";
         string jsonData = File.ReadAllText(path);
         dialogueDict = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(jsonData);
-        EnqueueDialogue("game start");
+        EnqueueDialogue(entryRef);
     }
 
     void Update()

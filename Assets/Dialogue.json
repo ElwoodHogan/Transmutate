@@ -1,6 +1,6 @@
 {
 	"game start": [
-		"Alright, robot. Let's see what you can do."
+		"Alright, robot. Time for testing. Let's see what you can do."
 	],
 	"0": [
 		"Wow, you can crouch. How impressive."
@@ -40,5 +40,19 @@
 	],
 	"11": [
 		"Did you ever notice how you only had to crouch the one time?"
+	],
+	"ending0": [
+		"You made it through, Robot!",
+		"We went ahead and shut off your senses.",
+		"Everyone here thinks that you did a great job.",
+		"Would you like to know our purposes here, Robot?",
+		"We weren't really here to test the Transmutation device.",
+		"We were really only testing you."
+	],
+	"ending1": [
+		"You belong to a home appliances company.",
+		"We have a new Toaster Oven set to release two fiscal quarters from now.",
+		"Your Artificial Intelligence is going to do an outstanding job running it!",
+		"I think that you'll be excellent."
 	]
 }
