@@ -10,6 +10,7 @@ public class GM_Sticky : GunMod
         shotBlock.gameObject.AddComponent<BM_Sticky>();
         FindObjectOfType<RigidbodyController>().GetComponent<StickyMovement>().enabled = false;
         FindObjectOfType<RigidbodyController>().GetComponent<RigidbodyController>().enabled = true;
+        FindObjectOfType<RigidbodyController>().Speed = 7f;
     }
 }
 

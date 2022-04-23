@@ -8,6 +8,7 @@ public class GM_Phase : GunMod
     protected override void TransmuteBlock(Collider shotBlock)
     {
         shotBlock.gameObject.AddComponent<BM_Phase>();
+        FindObjectOfType<RigidbodyController>().Speed = 7f;
     }
 }
 

@@ -8,6 +8,7 @@ public class GM_Bounce : GunMod
     protected override void TransmuteBlock(Collider shotBlock)
     {
         shotBlock.gameObject.AddComponent<BM_Bounce>();
+        FindObjectOfType<RigidbodyController>().Speed = 7f;
     }
 }
 
